@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userInput = parseInt(prompt("Please enter a positive integer from 1 to 100:"));
+        let resultString = "";
+
+        if (userInput >= 1 && userInput <= 100) {
+            for (let i = 1; i <= userInput; i++) {
+                console.log(i);
+                resultString += i + (i < userInput ? ", " : "");
+            }
+            console.log(resultString);
+        } else {
+            console.log("Invalid input. Please enter a number between 1 and 100.");
+        }
+    </script>
+</body>
+</html>
