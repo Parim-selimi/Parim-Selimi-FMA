@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userInput = parseInt(prompt("Please enter a positive integer:"));
+        let resultString = "";
+
+        if (userInput > 0) {
+            let a = 1, b = 1;
+            resultString += a + ", " + b;
+
+            for (let i = 3; i <= userInput; i++) {
+                let next = a + b;
+                resultString += ", " + next;
+                a = b;
+                b = next;
+            }
+
+            console.log(resultString);
+        } else {
+            console.log("Invalid input. Please enter a positive integer.");
+        }
+    </script>
+</body>
+</html>
