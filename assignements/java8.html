@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #299fc9;
+        }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .bubble:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        class Bubble {
+            constructor() {
+                this.createBubble();
+            }
+
+            createBubble() {
+                this.bubble = document.createElement('div');
+                this.bubble.className = 'bubble';
+                this.bubble.style.position = 'absolute';
+                this.bubble.style.width = '50px';
+                this.bubble.style.height = '50px';
+                this.bubble.style.borderRadius = '50%';
+                this.bubble.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.bubble.style.left = `${Math.random() * window.innerWidth}px`;
+                this.bubble.style.top = `${Math.random() * window.innerHeight}px`;
+                document.body.appendChild(this.bubble);
+            }
+        }
+
+        function createBubbles(count) {
+            for (let i = 0; i < count; i++) {
+                new Bubble();
+            }
+        }
+
+        function checkWinCondition() {
+            const bubbles = document.querySelectorAll('.bubble');
+            if (bubbles.length === 0) {
+                alert('Congratulations! You popped all the bubbles!');
+            }
+        }
+
+        document.body.addEventListener('click', function(event) {
+            if (event.target.classList.contains('bubble')) {
+                event.target.remove();
+                checkWinCondition();
+            }
+        });
+
+        createBubbles(10);
+    </script>
+</body>
+</html>

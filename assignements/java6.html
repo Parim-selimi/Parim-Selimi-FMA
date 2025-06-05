@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class CustomTextBox {
+            constructor() {
+                this.text = '';
+                this.createTextBox();
+            }
+
+            createTextBox() {
+                this.textBox = document.createElement('div');
+                this.textBox.contentEditable = true;
+                this.textBox.style.width = '300px';
+                this.textBox.style.height = '150px';
+                this.textBox.style.border = '1px solid #ccc';
+                this.textBox.style.padding = '10px';
+                this.textBox.style.overflowY = 'auto';
+                this.textBox.style.fontFamily = 'Arial, sans-serif';
+                this.textBox.style.fontSize = '16px';
+                this.textBox.setAttribute('placeholder', 'Type here...');
+                
+                document.body.appendChild(this.textBox);
+
+                this.textBox.addEventListener('input', (event) => {
+                    this.text = event.target.innerText;
+                });
+
+                this.textBox.addEventListener('keydown', (event) => {
+                    if (event.key === 'Backspace') {
+                        if (this.text.length > 0) {
+                            this.text = this.text.slice(0, -1);
+                        }
+                    }
+                });
+            }
+        }
+
+        new CustomTextBox();
+    </script>
+</body>
+</html>

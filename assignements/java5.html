@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const popup = document.createElement('div');
+        popup.style.position = 'fixed';
+        popup.style.top = '20px';
+        popup.style.left = '50%';
+        popup.style.transform = 'translateX(-50%)';
+        popup.style.padding = '20px';
+        popup.style.backgroundColor = '#f44336';
+        popup.style.color = '#fff';
+        popup.style.borderRadius = '5px';
+        popup.style.display = 'none'; 
+        popup.innerText = 'You are offline, please wait until you are reconnected';
+
+        document.body.appendChild(popup);
+
+        function showPopup() {
+            popup.style.display = 'block';
+        }
+
+        function hidePopup() {
+            popup.style.display = 'none';
+        }
+
+        window.addEventListener('offline', showPopup);
+        window.addEventListener('online', hidePopup);
+    </script>
+</body>
+</html>
